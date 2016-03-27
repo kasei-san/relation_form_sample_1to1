@@ -15,5 +15,11 @@
     = f.label :price
     %br/
     = f.number_field :price
+
+  = f.fields_for :detail do |detail|
+    = detail.label :description
+    %br/
+    = detail.text_field :description
+
   .actions
     = f.submit

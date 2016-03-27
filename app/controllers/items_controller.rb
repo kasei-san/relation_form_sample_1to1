@@ -15,10 +15,12 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @item.build_detail
   end
 
   # GET /items/1/edit
   def edit
+    @item.build_detail unless @item.detail.present?
   end
 
   # POST /items
@@ -69,6 +71,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :price)
+      params.require(:item).permit(:name, :price, detail_attributes: %i[id description])
     end
 end

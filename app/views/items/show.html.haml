@@ -5,6 +5,11 @@
 %p
   %strong Price:
   = @item.price
+%p
+  %strong Detail:
+  - if @item.detail.present?
+    = @item.detail.description
+
 = link_to 'Edit', edit_item_path(@item)
 |
 = link_to 'Back', items_path
